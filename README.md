@@ -2,7 +2,7 @@
 this package brings state functionality to the blaze templates
 
 
-## Instalation
+## Installation
 ```sh
 $ meteor cristo:state-in-templates
 ```
