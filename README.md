@@ -14,7 +14,7 @@ $ meteor cristo:state-in-templates
 ```html
 <template name="myListing">
     <span><b>count:</b> {{_state 'count'}}</span>
-    <button>Increment</button>
+    <button>Increast</button>
 </template>
 
 ```

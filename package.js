@@ -15,10 +15,3 @@ Package.onUse(function(api) {
   api.use(['ecmascript', 'templating', 'reactive-var', 'reactive-dict'], 'client');
   api.mainModule('state-in-templates.js');
 });
-
-Package.onTest(function(api) {
-  api.use('ecmascript');
-  api.use('tinytest');
-  api.use('cristo:state-in-templates');
-  api.mainModule('state-in-templates-tests.js');
-});
