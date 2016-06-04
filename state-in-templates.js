@@ -12,10 +12,16 @@ export default function addStateToTemplate (template) {
         });
         this.autorun(() => {
             const {_state} = Template.currentData();
-            if (_state && (_state._state instanceof ReactiveDict)) {
-                this.state = _state._state;
-                return;
+            if (_state) {
+                if (_state._shareState instanceof ReactiveDict) {
+                    this.state = _state._shareState;
+                    return;
+                } else if (_state instanceof ReactiveDict) {
+                    this.state = _state;
+                    return;
+                }
             }
+
             if (!this.state) {
                 this.state = new ReactiveDict();
             }
@@ -27,11 +33,7 @@ export default function addStateToTemplate (template) {
             if (typeof what === 'string') {
                 return state && state.get(what);
             }
-
-            const arr = state && state.all() || {};
-            arr._state = state;
-            return arr;
-
+            return Object.assign(Object.create({_shareState: state}), (state && state.all() || {}));
         }
     });
 }

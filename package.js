@@ -1,6 +1,6 @@
 Package.describe({
   name: 'cristo:state-in-templates',
-  version: '1.0.1',
+  version: '1.0.2',
   // Brief, one-line summary of the package.
   summary: 'this package brings state functionality to the blaze templates',
   // URL to the Git repository containing the source code for this package.
