@@ -78,3 +78,22 @@ Template.list.onCreated(function () {
     this.state.set('lastName', 'Rabani');
 });
 ```
+
+## Using state functionality with autoform
+
+1. Add state functionality to the autoform template
+
+```js
+addStateToTemplate(Template.autoForm);
+```
+
+2. If you want share current state for autoform form, you should inject current state to the form like this:
+
+```html
+{{#autoForm schema=getSchema id="myForm"  _state=_state}}
+    {{> afQuickField name='price' value=(_state 'count')}}
+{{/autoform}}
+
+```
+
+## LICENSE MIT
