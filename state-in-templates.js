@@ -43,14 +43,21 @@ export default function addStateToTemplate (template) {
                         return true;
                     }
                 }
-                if (_shouldTemplateUpdate && _shouldTemplateUpdate(oldData, data) === false) {
-                    return true;
+                if (_shouldTemplateUpdate) {
+                    const result = _shouldTemplateUpdate(oldData, data);
+                    if (typeof result === 'boolean') {
+                        return !result;
+                    }
                 }
                 const keys = _.union(Object.keys(data), Object.keys(oldData));
                 return keys.every(key => oldData[key] === data[key]);
             };
+            //Experimental method:
+            this.forceUpdateTemplate = () => {
+                view.dataVar.dep.changed();
+            }
         } else {
-            //Fallback
+            // Fallback - I am not sure if still can be useful (maybe there is some case)
             this.autorun(() => {
                 const {_state} = Template.currentData();
                 if (_state && attachNewState(_state)) {
@@ -61,6 +68,7 @@ export default function addStateToTemplate (template) {
                     attachNewState(new ReactiveDict());
                 }
             });
+            this.forceUpdateTemplate = () => {};
         }
     });
 
