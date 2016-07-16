@@ -53,7 +53,7 @@ export default function addStateToTemplate (template) {
                 return keys.every(key => oldData[key] === data[key]);
             };
             //Experimental method:
-            this.forceUpdateTemplate = () => {
+            this._forceUpdateTemplate = () => {
                 view.dataVar.dep.changed();
             }
         } else {
@@ -68,7 +68,7 @@ export default function addStateToTemplate (template) {
                     attachNewState(new ReactiveDict());
                 }
             });
-            this.forceUpdateTemplate = () => {};
+            this._forceUpdateTemplate = () => {};
         }
     });
 
