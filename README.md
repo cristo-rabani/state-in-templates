@@ -86,7 +86,7 @@ Invoked when a component is receiving new props.
 Your callback isn't called for the initial render.
 
 ```
-Template.onRendered(function () {
+Template.list.onRendered(function () {
     this.shouldTemplateUpdate((oldProps, newProps) => {
         return oldProps._id !== newProps._id
     });
